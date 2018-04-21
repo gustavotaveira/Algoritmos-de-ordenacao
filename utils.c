@@ -19,7 +19,7 @@ void limparTela(){
 }
 
 void inicio(int* controle, int* isRunning){
-    printf("Deseja retornar ao menu pricipal?\n 1 - Sim\n0 - Não\n");
+    printf("Deseja retornar ao menu pricipal?\n1 - Sim\n0 - Não\n");
     scanf("%d", controle);
     if(*controle  == 0){
         *isRunning = FALSE;
