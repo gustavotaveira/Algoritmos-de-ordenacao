@@ -1,0 +1,7 @@
+*.exe
+*.o
+*.save-failed
+\bin
+\obj
+*.depend
+*.layout
