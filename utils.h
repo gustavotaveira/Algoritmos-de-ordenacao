@@ -5,7 +5,7 @@
 #include<stdlib.h>
 void menu();
 void limparTela();
-void inicio(int *controle);
+void inicio(int *controle, int* isRunning);
 
 
 #endif /* UTILS_H */
