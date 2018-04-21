@@ -1,10 +1,8 @@
 #include "utils.h"
 
-#define TRUE 1
-#define FALSE 0
 
 void menu(){
-    printf("Algoritmos de ordenação\n\n");
+    printf("Algoritmos de ordenaï¿½ï¿½o\n\n");
     printf("1 - Insertion Sort\n");
     printf("2 - Bubble Sort\n");
     printf("3 - Selection Sort\n");
@@ -18,8 +16,8 @@ void limparTela(){
     system("cls");
 }
 
-void inicio(int* controle, int* isRunning){
-    printf("Deseja retornar ao menu pricipal?\n 1 - Sim\n0 - Não\n");
+void inicio(int* controle, Bool* isRunning){
+    printf("Deseja retornar ao menu pricipal?\n 1 - Sim\n0 - Nï¿½o\n");
     scanf("%d", controle);
     if(*controle  == 0){
         *isRunning = FALSE;

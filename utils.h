@@ -3,6 +3,7 @@
 
 #include<stdio.h>
 #include<stdlib.h>
+
 void menu();
 void limparTela();
 void inicio(int *controle, int* isRunning);

@@ -9,7 +9,7 @@ int main(void){
     setlocale(LC_ALL, "portuguese");
 
     int controle = -1;
-    int isRunning = TRUE;
+    Bool isRunning = TRUE;
     while(isRunning == TRUE){
 
         menu();
@@ -44,5 +44,3 @@ int main(void){
     }
     return 0;
 }
-
-
