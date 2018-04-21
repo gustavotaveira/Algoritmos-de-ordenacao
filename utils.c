@@ -2,6 +2,7 @@
 
 #define TRUE 1
 #define FALSE 0
+
 void menu(){
     printf("Algoritmos de ordenação\n\n");
     printf("1 - Insertion Sort\n");

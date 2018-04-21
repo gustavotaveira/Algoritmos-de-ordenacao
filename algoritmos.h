@@ -5,6 +5,8 @@
 #include<stdio.h>
 #include<stdlib.h>
 
+#define TRUE 1
+#define FALSE 0
 
 void insertionSort(int elementos);
 void bubbleSort(int elementos);

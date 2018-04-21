@@ -2,9 +2,7 @@
 #include<locale.h>
 #include<stdlib.h>
 #include "utils.h"
-#define TRUE 1
-#define FALSE 0
-
+#include "algoritmos.h"
 
 int main(void){
 
@@ -26,13 +24,11 @@ int main(void){
             break;
 
             case 3: printf("Selection sort\n\n");
-
-            int n;
-            printf("Insira a quantidade de elementos a ordenar: ");
-            scanf("%d", &n);
-            printf("Iniciando a ordenacao de %d elementos\n", n);
-
-
+                    int n;
+                    printf("Insira a quantidade de elementos a ordenar: ");
+                    scanf("%d", &n);
+                    printf("Iniciando a ordenacao de %d elementos\n", n);
+                    selectionSort(n);
             break;
 
             case 4: printf("Shell sort\n\n");
