@@ -1,8 +1,21 @@
 #include "algoritmos.h"
 
-void insertionSort(int elementos){
+void insertionSort(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo))
+{
 
+  for(int i = 1; i < comprimento; i++)
+  {
+    int temp = array[i];
+    int j = i - 1;
+    while(j >= 0 && compare( array[j], temp))
+    {
+      array[j+1] = array[j];
+      j--;
+    }
+    array[j+1] = temp;
+  }
 }
+
 void bubbleSort(int elementos){
 
 }
