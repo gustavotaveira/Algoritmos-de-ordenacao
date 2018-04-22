@@ -6,9 +6,9 @@
 #include<stdlib.h>
 
 //Define o tipo Bool
-typedef enum _Bool { FALSE = 0, TRUE = 1}Bool;
+typedef enum { FALSE = 0, TRUE = 1}Bool;
 
-void insertionSort(int elementos);
+void insertionSort(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo));
 void bubbleSort(int elementos);
 void selectionSort(int elementos);
 void shellSort(int elementos);

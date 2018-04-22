@@ -7,7 +7,7 @@ void insertionSort(int *array, int comprimento, Bool (*compare)(int primeiro, in
   {
     int temp = array[i];
     int j = i - 1;
-    while(j >= 0 && compare( array[j], temp))
+    while(j >= 0 && compare( array[j], temp) == FALSE)
     {
       array[j+1] = array[j];
       j--;
@@ -45,18 +45,17 @@ Bool isSorted(int *array, int comprimento, Bool (*compare)(int primeiro, int seg
   }
   return TRUE;
 }
-
+//Retorna FALSE caso a ordem esteja errada
 Bool crescente(int primeiro, int segundo)
 {
   if(primeiro <= segundo)
     return TRUE;
   return FALSE;
 }
-
+//Retorna FALSE caso a ordem esteja errada
 Bool decrescente(int primeiro, int segundo)
 {
   if(primeiro >= segundo)
     return TRUE;
   return FALSE;
-}
 }

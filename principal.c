@@ -1,10 +1,14 @@
 #include<stdio.h>
 #include<locale.h>
 #include<stdlib.h>
-//#include "utils.h"
-//#include "algoritmos.h"
+#include<time.h>
+#include "utils.h"
+#include "algoritmos.h"
 
-int main(void){
+void imprimeVetor(int *arrayExcel, int comprimento, const int tamanhoLinha);
+
+int main()
+{
 
     setlocale(LC_ALL, "portuguese");
     FILE *excel = fopen("vetor de entrada.csv", "r");
@@ -36,23 +40,38 @@ int main(void){
     fclose(excel);
 
     //Imprime o vetor
-    int s = 0;
-    int LINHA = 20;
-    for(int i = 0; i < comprimento; i++)
-    {
-      if(s < LINHA)
-      {
-        printf("[%d] ", arrayExcel[i]);
-        s++;
-      }
-      else
-      {
-        printf("\n[%d] ", arrayExcel[i]);
-        s = 1;
-      }
-    }
-    printf("\n");
+    imprimeVetor(arrayExcel, comprimento, 20);
 
+    //Ordena o Vetor por Insertion Sort
+    clock_t t = clock();
+    insertionSort(arrayExcel, comprimento, crescente);
+    t = clock() - t;
+    //Imprime o vetor
+    imprimeVetor(arrayExcel, comprimento, 20);
+    //Verifica se a ordenação funcionou corretamente
+    if(isSorted(arrayExcel, comprimento, crescente) == TRUE)
+      printf("Array ordenado\nFoi levado %d ciclos do processador (%f segundos)\n", t, ((float)t)/CLOCKS_PER_SEC);
 
+    else
+      printf("Array não ordenado\n");
     return 0;
+}
+
+void imprimeVetor(int *arrayExcel, int comprimento, const int tamanhoLinha)
+{
+  int s = 0;
+  for(int i = 0; i < comprimento; i++)
+  {
+    if(s < tamanhoLinha)
+    {
+      printf("[%d] ", arrayExcel[i]);
+      s++;
+    }
+    else
+    {
+      printf("\n[%d] ", arrayExcel[i]);
+      s = 1;
+    }
+  }
+  printf("\n");
 }
