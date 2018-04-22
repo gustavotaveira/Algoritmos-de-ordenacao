@@ -5,7 +5,7 @@
 #include "utils.h"
 #include "algoritmos.h"
 
-void imprimeVetor(int *arrayExcel, int comprimento, const int tamanhoLinha);
+
 
 int main()
 {
@@ -60,23 +60,4 @@ int main()
 
     free(d);
     return 0;
-}
-
-void imprimeVetor(int *arrayExcel, int comprimento, const int tamanhoLinha)
-{
-  int s = 0;
-  for(int i = 0; i < comprimento; i++)
-  {
-    if(s < tamanhoLinha)
-    {
-      printf("[%d] ", arrayExcel[i]);
-      s++;
-    }
-    else
-    {
-      printf("\n[%d] ", arrayExcel[i]);
-      s = 1;
-    }
-  }
-  printf("\n");
 }

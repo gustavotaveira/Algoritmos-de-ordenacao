@@ -4,9 +4,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-void menu();
-void limparTela();
-void inicio(int *controle, int* isRunning);
+void imprimeVetor(int *arrayExcel, int comprimento, const int tamanhoLinha);
 
 
 #endif /* UTILS_H */
