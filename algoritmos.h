@@ -8,7 +8,13 @@
 //Define o tipo Bool
 typedef enum { FALSE = 0, TRUE = 1}Bool;
 
-void insertionSort(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo));
+typedef struct _Desempenho
+{
+  int comparacoes;
+  int trocas;
+}Desempenho;
+
+Desempenho *insertionSort(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo));
 void bubbleSort(int elementos);
 void selectionSort(int elementos);
 void shellSort(int elementos);

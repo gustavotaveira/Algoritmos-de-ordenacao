@@ -1,19 +1,24 @@
 #include "algoritmos.h"
 
-void insertionSort(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo))
+Desempenho *insertionSort(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo))
 {
-
+  Desempenho *desInsert = (Desempenho*)malloc(sizeof(Desempenho));
+  desInsert->trocas = 0;
+  desInsert->comparacoes = 0;
   for(int i = 1; i < comprimento; i++)
   {
     int temp = array[i];
     int j = i - 1;
-    while(j >= 0 && compare( array[j], temp) == FALSE)
+    while(j >= 0 && (compare( array[j], temp) == FALSE))
     {
+      desInsert->trocas++;
+      desInsert->comparacoes++;
       array[j+1] = array[j];
       j--;
     }
     array[j+1] = temp;
   }
+  return desInsert;
 }
 
 void bubbleSort(int elementos){

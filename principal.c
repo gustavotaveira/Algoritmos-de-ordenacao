@@ -42,18 +42,23 @@ int main()
     //Imprime o vetor
     imprimeVetor(arrayExcel, comprimento, 20);
 
+    //Ponteiro que vai apontar para a estrutura que armazenara o desempenho
+    Desempenho *d = NULL;
     //Ordena o Vetor por Insertion Sort
     clock_t t = clock();
-    insertionSort(arrayExcel, comprimento, crescente);
+    d = insertionSort(arrayExcel, comprimento, crescente);
     t = clock() - t;
     //Imprime o vetor
     imprimeVetor(arrayExcel, comprimento, 20);
     //Verifica se a ordenação funcionou corretamente
     if(isSorted(arrayExcel, comprimento, crescente) == TRUE)
-      printf("Array ordenado\nFoi levado %d ciclos do processador (%f segundos)\n", t, ((float)t)/CLOCKS_PER_SEC);
-
+      printf("Array ordenado por InsertionSort\nFoi levado %d ciclos do processador\
+              (%f segundos)\nRealizou %d comparações e %d trocas\n",
+               t, ((float)t)/CLOCKS_PER_SEC, d->comparacoes, d->trocas);
     else
       printf("Array não ordenado\n");
+
+    free(d);
     return 0;
 }
 
