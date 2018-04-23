@@ -1,12 +1,8 @@
 #include<locale.h>
-#include<time.h>
 #include "utils.h"
-#include "algoritmos.h"
 
 int main()
-{
-  Desempenho *(*funcoes[6])(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo));
-  enum Sorts{ QUICK = 0, MERGE = 1, BUBLLE = 2, SELECTION = 3, SHELL = 4, INSERTION = 5};
+{  extern Desempenho *(*funcoes[6])(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo));
   /*funcoes[QUICK] = ;
   funcoes[MERGE] = ;
   funcoes[BUBLLE] = ;
@@ -20,8 +16,8 @@ int main()
 
   sortTeste(INSERTION, *arrayExcel, crescente);
   sortTeste(SHELL, *arrayExcel, crescente);
-
-  free((*arrayExcel)->array);
+  
+  free((*arrayExcel).array);
   free(arrayExcel);
   return 0;
 }

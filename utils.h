@@ -3,6 +3,9 @@
 
 #include<stdio.h>
 #include<stdlib.h>
+#include <string.h>
+#include<time.h>
+#include "algoritmos.h"
 
 typedef struct _Vetor
 {
@@ -11,7 +14,7 @@ typedef struct _Vetor
 }Vetor;
 
 void imprimeVetor(int *arrayExcel, int comprimento, const int tamanhoLinha);
-void sortTeste(enum Sorts tipo, Vetor array, Bool (*compare)(int primeiro, int segundo));
+void sortTeste(int tipo, Vetor array, Bool (*compare)(int primeiro, int segundo));
 Vetor *carregaExcel();
 
 #endif /* UTILS_H */
