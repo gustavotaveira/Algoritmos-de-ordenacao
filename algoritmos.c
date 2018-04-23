@@ -9,14 +9,14 @@ Desempenho *insertionSort(int *array, int comprimento, Bool (*compare)(int prime
   {
     int temp = array[i];
     int j = i - 1;
-    while(j >= 0 && (compare( array[j], temp) == FALSE))
+    while(j >= 0 && (desInsert->comparacoes++, compare( array[j], temp) == FALSE))
     {
-      desInsert->trocas++;
-      desInsert->comparacoes++;
       array[j+1] = array[j];
+      desInsert->trocas++;
       j--;
     }
     array[j+1] = temp;
+    desInsert->trocas++;
   }
   return desInsert;
 }
@@ -27,9 +27,30 @@ void bubbleSort(int elementos){
 void selectionSort(int elementos){
 
 }
-void shellSort(int elementos){
+Desempenho *shellSort(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo))
+{
+  Desempenho *desInsert = (Desempenho*)malloc(sizeof(Desempenho));
+  desInsert->trocas = 0;
+  desInsert->comparacoes = 0;
+  for(int h = comprimento/2; h > 0; h = h/2)
+  {
+    for(int i = h; i < comprimento; i++)
+    {
+      int temp = array[i];
+      int j;
+      for(int j = i; j >= h &&(desInsert->comparacoes++, compare( array[j - h], temp) == FALSE); j -= h)
+      {
+        array[j] = array[j - h];
+        desInsert->trocas++;
+      }
+      array[j] = temp;
+      desInsert->trocas++;
+    }
 
+  }
+  return desInsert;
 }
+
 void quickSort(int elementos){
 
 }

@@ -17,7 +17,7 @@ typedef struct _Desempenho
 Desempenho *insertionSort(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo));
 void bubbleSort(int elementos);
 void selectionSort(int elementos);
-void shellSort(int elementos);
+Desempenho *shellSort(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo));
 void quickSort(int elementos);
 void mergeSort(int elementos);
 
