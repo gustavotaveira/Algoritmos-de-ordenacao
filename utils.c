@@ -120,6 +120,7 @@ Complexidade: %s\nOtimo: %s\nEstavel: %s\nInplace: %s\n\n",nome,
   else
     printf("Falha ao ordenar por %s\n", nome);
 
+
   //Desalocando memoria dinamica
   free(duplicado);
   free(d);

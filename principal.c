@@ -16,7 +16,7 @@ int main()
 
   sortTeste(INSERTION, *arrayExcel, crescente);
   sortTeste(SHELL, *arrayExcel, crescente);
-  
+
   free((*arrayExcel).array);
   free(arrayExcel);
   return 0;

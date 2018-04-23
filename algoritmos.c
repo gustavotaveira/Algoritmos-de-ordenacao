@@ -38,7 +38,7 @@ Desempenho *shellSort(int *array, int comprimento, Bool (*compare)(int primeiro,
     {
       int temp = array[i];
       int j;
-      for(int j = i; j >= h &&(desInsert->comparacoes++, compare( array[j - h], temp) == FALSE); j -= h)
+      for(j = i; j >= h &&(desInsert->comparacoes++, compare( array[j - h], temp) == FALSE); j = j - h)
       {
         array[j] = array[j - h];
         desInsert->trocas++;
