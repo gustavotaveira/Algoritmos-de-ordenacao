@@ -2,67 +2,114 @@
 
 Desempenho *insertionSort(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo))
 {
+  int i, j;
   Desempenho *desInsert = (Desempenho*)malloc(sizeof(Desempenho));
   desInsert->trocas = 0;
   desInsert->comparacoes = 0;
-  for(int i = 1; i < comprimento; i++)
+  for(i = 1; i < comprimento; i++)
   {
     int temp = array[i];
-    int j = i - 1;
-    while(j >= 0 && (desInsert->comparacoes++, compare( array[j], temp) == FALSE))
+    j = i - 1;
+    while(j >= 0 && (compare( array[j], temp) == FALSE))
     {
-      array[j+1] = array[j];
       desInsert->trocas++;
+      desInsert->comparacoes++;
+      array[j+1] = array[j];
       j--;
     }
     array[j+1] = temp;
-    desInsert->trocas++;
   }
   return desInsert;
 }
 
-void bubbleSort(int elementos){
+Desempenho *bubbleSort(int *array, int comprimento)
+{
+    int i, j, aux;
+    Desempenho *desBubble = (Desempenho*)malloc(sizeof(Desempenho));
+    desBubble->trocas = 0;
+    desBubble->comparacoes = 0;
 
+    for (i = 1; i < comprimento; i++) {
+        for (j = 0; j < comprimento - i; j++) {
+            desBubble->comparacoes++;
+            if (array[j] > array[j + 1]) {
+
+                desBubble->trocas++;
+                aux = array[j];
+                array[j] = array[j + 1];
+                array[j + 1] = aux;
+            }
+        }
+    }
+    return desBubble;
 }
 void selectionSort(int elementos){
 
 }
-Desempenho *shellSort(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo))
-{
-  Desempenho *desInsert = (Desempenho*)malloc(sizeof(Desempenho));
-  desInsert->trocas = 0;
-  desInsert->comparacoes = 0;
-  for(int h = comprimento/2; h > 0; h = h/2)
-  {
-    for(int i = h; i < comprimento; i++)
-    {
-      int temp = array[i];
-      int j;
-      for(j = i; j >= h &&(desInsert->comparacoes++, compare( array[j - h], temp) == FALSE); j = j - h)
-      {
-        array[j] = array[j - h];
-        desInsert->trocas++;
-      }
-      array[j] = temp;
-      desInsert->trocas++;
-    }
+void shellSort(int elementos){
 
-  }
-  return desInsert;
 }
-
 void quickSort(int elementos){
 
 }
-void mergeSort(int elementos){
+Desempenho *mergeSort(int *array, int comeco, int fim){
+    Desempenho *desMerge = (Desempenho*)malloc(sizeof(Desempenho));
+    desMerge->trocas = 0;
+    desMerge->comparacoes = 0;
+    if (comeco < fim) {
+        int meio = (comeco+fim)/2;
+        mergeSort(array, comeco, meio);
+        mergeSort(array, meio+1, fim);
+        int n1 = comeco, n2 = meio+1,comecoAux = 0, tam = (fim-comeco+1);
+        int *aux;
+        aux = (int*)malloc(sizeof(int) * tam);
 
+        while(n1 <= meio && n2 <= fim){
+            if(crescente(array[n1], array[n2])) {
+                desMerge->comparacoes++;
+                aux[comecoAux] = array[n2];
+                n1++;
+                desMerge->trocas++;
+            } else {
+                aux[comecoAux] = array[n2];
+                n2++;
+                desMerge->trocas++;
+            }
+            comecoAux++;
+        }
+
+        while(n1 <= meio){  //Caso ainda haja elementos na primeira metade
+            aux[comecoAux] = array[n1];
+            comecoAux++; desMerge->trocas++;
+            n1++;
+        }
+
+        while(n2 <= fim) {   //Caso ainda haja elementos na segunda metade
+            aux[comecoAux] = array[n2];
+            comecoAux++;    desMerge->trocas++;
+            n2++;
+        }
+
+        for(comecoAux = comeco; comecoAux <= fim; comecoAux++){    //Move os elementos de volta para o vetor original
+            array[comecoAux] = aux[comecoAux-comeco];
+            desMerge->trocas++;
+        }
+        free(aux);
+
+        }
+        return desMerge;
+        free(desMerge);
 }
+
+
+
 
 //Retorna TRUE se array estiver ordenado de acordo com a comparação da função compare
 Bool isSorted(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo))
 {
+   int i;
   //Repede do segundo termo até o ultimo
-  for(int i = 1; i < comprimento; i++)
+  for(i = 1; i < comprimento; i++)
   {
     //Realiza a comparação entre o termo anterior e o atual
     //Caso a comparação falhe termina a função

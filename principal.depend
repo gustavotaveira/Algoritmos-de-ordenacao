@@ -1,0 +1,45 @@
+# depslib dependency file v1.0
+1524491286 source:c:\users\user\desktop\trab\algoritmos-de-ordenacao-vitor\principal.c
+	<stdio.h>
+	<locale.h>
+	<stdlib.h>
+	<time.h>
+	"utils.h"
+	"algoritmos.h"
+
+1524491286 c:\users\user\desktop\trab\algoritmos-de-ordenacao-vitor\utils.h
+	<stdio.h>
+	<stdlib.h>
+
+1524434478 c:\users\user\desktop\trab\algoritmos-de-ordenacao-vitor\algoritmos.h
+	<stdio.h>
+	<stdlib.h>
+
+1524491416 source:c:\users\user\desktop\trab\algoritmos-de-ordenacao-vitor\utils.c
+	"utils.h"
+
+1524483208 source:c:\users\user\desktop\trab\algoritmos-de-ordenacao-vitor\algoritmos.c
+	"algoritmos.h"
+
+1524529963 source:c:\users\user\desktop\trab\algoritmos-de-ordenacao-logan\algoritmos.c
+	"algoritmos.h"
+
+1524434478 c:\users\user\desktop\trab\algoritmos-de-ordenacao-logan\algoritmos.h
+	<stdio.h>
+	<stdlib.h>
+
+1524529963 source:c:\users\user\desktop\trab\algoritmos-de-ordenacao-logan\principal.c
+	<stdio.h>
+	<locale.h>
+	<stdlib.h>
+	<time.h>
+	"utils.h"
+	"algoritmos.h"
+
+1524519366 c:\users\user\desktop\trab\algoritmos-de-ordenacao-logan\utils.h
+	<stdio.h>
+	<stdlib.h>
+
+1524524686 source:c:\users\user\desktop\trab\algoritmos-de-ordenacao-logan\utils.c
+	"utils.h"
+

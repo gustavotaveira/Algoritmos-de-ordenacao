@@ -8,21 +8,18 @@
 //Define o tipo Bool
 typedef enum { FALSE = 0, TRUE = 1}Bool;
 
-enum Sorts{ QUICK = 0, MERGE = 1, BUBLLE = 2, SELECTION = 3, SHELL = 4, INSERTION = 5};
-
 typedef struct _Desempenho
 {
   int comparacoes;
   int trocas;
 }Desempenho;
 
-
 Desempenho *insertionSort(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo));
-void bubbleSort(int elementos);
+Desempenho *bubbleSort(int *array, int comprimento);
 void selectionSort(int elementos);
-Desempenho *shellSort(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo));
+void shellSort(int elementos);
 void quickSort(int elementos);
-void mergeSort(int elementos);
+Desempenho *mergeSort(int *array, int comeco, int fim);
 
 //Retorna TRUE se array estiver ordenado de acordo com a comparação da função compare
 Bool isSorted(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo));
