@@ -1,3 +1,8 @@
+#include<stdio.h>
+#include<locale.h>
+#include<stdlib.h>
+#include<time.h>
+
 #include "utils.h"
 #define TRUE 1
 #define FALSE 0
@@ -28,6 +33,39 @@ void imprimeVetor(int *arrayExcel, int comprimento, const int tamanhoLinha)
   printf("\n");
 }
 
+int* gerarArrayExcel(){
+    FILE *excel = fopen("vetor de entrada.csv", "r");
+    if(excel == NULL)
+    {
+      printf("ERRO: Falha ao abrir arquivo csv\n");
+      return 1;
+    }
+
+    char buffer[8];
+    //Contador da quantidade de numeros contidos no arquivo de texto
+    int comprimento = 0, isRunning = TRUE;
+    int i, valor = -1, qtd = 0;
+
+    //Conta a quantidade de numeros no arquivo
+    while(fgets(buffer, 8, excel) != NULL)
+    {
+      comprimento++;
+    }
+    //Retorna o ponteiro do arquivo de texto para o inicio
+    fseek(excel, 0, SEEK_SET);
+    //Reserva o espaço de memoria para o array do arquivo
+    int *arrayExcel = (int*)malloc(sizeof(int) * comprimento);
+    //Preenche o arquivo
+    for( i = 0; i < comprimento; i++)
+    {
+      fgets(buffer, 8, excel);
+      arrayExcel[i] = atoi(buffer);
+    }
+    //Fecha o arquivo
+    fclose(excel);
+    return arrayExcel;
+}
+
 void menu(){
     printf("Digite qual a forma de ordenação desejada:\n");
     printf("\t1- Quick Sort\n");
@@ -45,7 +83,7 @@ void inserirEntrada(){
     printf("\t2- Vetor decrescente de 1000\n");
     printf("\t3- Vetor decrescente de 10000\n");
     printf("\t4- Vetor decrescente de 50000\n");
-    printf("\t5- Entrada do exel\n");
+    printf("\t5- Entrada do excel\n");
     printf("\t0 - Sair\n");
 }
 
@@ -53,10 +91,10 @@ void limparTela(){
     system("cls");
 }
 
-void inicio(int* valor, int* isRunning){
+void inicio(int* controle, int* isRunning){
     printf("\nDeseja retornar ao menu pricipal?\n 1 - Sim\n0 - Não\n");
-    scanf("%d", valor);
-    if(*valor  == 0){
+    scanf("%d", controle);
+    if(*controle  == 0){
         *isRunning = FALSE;
     }
     limparTela();
@@ -107,6 +145,14 @@ int *entradas(int qtd, const int tam){
     printf("\n");
     return val;
     free(val);
+}
+
+popular(int* array, int tam){
+    int i, j = 0;
+    for(i=tam; i>0; i--){
+        *(array+j) = i;
+        j++;
+    }
 }
 
 

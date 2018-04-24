@@ -43,63 +43,43 @@ Desempenho *bubbleSort(int *array, int comprimento)
     }
     return desBubble;
 }
- Desempenho* selectionSort(int elementos){
-    clock_t tempoExecucao;
+ Desempenho* selectionSort(int* array, int comprimento){
+
+    Desempenho *desempenho =(Desempenho*) malloc(sizeof(Desempenho));
     int i =0, j = 0, menor;
     int comparacoes = 0;
     int trocas = 0;
-    char complexidade[] = "n^2";
-    int otimo = TRUE;
-    int estavel = FALSE;
-    int inPlace = TRUE;
-    char tipoOrdenacao[] = "Seleção";
-    int vetor[elementos];
-    int aux;
-    printf("Criando vetor: ");
-    for(i = elementos;i > 0; i--){
-        vetor[j] = i;
-        printf("%d ", vetor[j]);
-        j++;
-    }
-    tempoExecucao = clock();
 
-   for(i=0; i<elementos; i++){
-           menor = i;
-         for(j=i+1; j<elementos; j++){
-           if(vetor[j] < vetor[menor]){
+    desempenho->comparacoes = 0;
+    desempenho->trocas = 0;
+
+   for(i=0; i<comprimento; i++){
+
+        menor = i;
+
+        for(j=i+1; j<elementos; j++){
+
+            if(vetor[j] < vetor[menor]){
                menor = j;
             }
-            comparacoes++;
+
+            desempenho->comparacoes++;
         }
+
        if(vetor[i] != vetor[menor]){
             aux = vetor[i];
-           vetor[i] = vetor[menor];
+            vetor[i] = vetor[menor];
             vetor[menor] = aux;
-            trocas++;
+            desempenho->trocas++;
         }
     }
-    tempoExecucao = clock() - tempoExecucao;
-    printf("\n\n");
-  printf("Saída: ");
-    for(i = 0; i < elementos; i++){
-        printf("%d ", vetor[i]);
-    }
-   printf("\n\nTempo de execução: %f ms\n", ((float)tempoExecucao)/CLOCKS_PER_SEC);
-   printf("Comparações: %d\n", comparacoes);
-   printf("Trocas: %d\n", trocas);
-   printf("Complexidade: %s\n", complexidade);
-    printf("Ótimo: %s\n", otimo == TRUE? "SIM" : "NAO");
-    printf("Estável: %s\n", estavel == TRUE? "SIM" : "NAO");
-    printf("In-place: %s\n", inPlace == TRUE? "SIM" : "NAO");
-    printf("Tipo de ordenação: %s\n\n", tipoOrdenacao);
-    return 0;
+    return desempenho;
  }
-void shellSort(int elementos){
-
+Desempenho *shellSort(int *array, int comprimento){
 }
-void quickSort(int elementos){
-
+Desempenho *quickSort(int *array, int comprimento){
 }
+
 Desempenho *mergeSort(int *array, int comeco, int fim){
     Desempenho *desMerge = (Desempenho*)malloc(sizeof(Desempenho));
     desMerge->trocas = 0;

@@ -5,76 +5,68 @@
 #include "utils.h"
 #include "algoritmos.h"
 
-
-
 int main()
 {
-
     setlocale(LC_ALL, "portuguese");
-    FILE *excel = fopen("vetor de entrada.csv", "r");
-    if(excel == NULL)
-    {
-      printf("ERRO: Falha ao abrir arquivo csv\n");
-      return 1;
-    }
-
-    char buffer[8];
-    //Contador da quantidade de numeros contidos no arquivo de texto
-    int comprimento = 0, isRunning = TRUE;
-    int i, valor = -1, qtd = 0;
-    int *array;
-    //Conta a quantidade de numeros no arquivo
-    while(fgets(buffer, 8, excel) != NULL)
-    {
-      comprimento++;
-    }
-    //Retorna o ponteiro do arquivo de texto para o inicio
-    fseek(excel, 0, SEEK_SET);
-    //Reserva o espaço de memoria para o array do arquivo
-    int *arrayExcel = (int*)malloc(sizeof(int) * comprimento);
-    //Preenche o arquivo
-    for( i = 0; i < comprimento; i++)
-    {
-      fgets(buffer, 8, excel);
-      arrayExcel[i] = atoi(buffer);
-    }
-    //Fecha o arquivo
-    fclose(excel);
 
     //Ponteiro que vai apontar para a estrutura que armazenara o desempenho
     Desempenho *d = NULL;
+
+    int *array;
+    int comprimento;
+    int controle = -1;
     while(isRunning == TRUE){
 
         menu();
-        scanf("%d", &valor);
-        inserirEntrada();
-        scanf("%d", &qtd);
-        array = (int*)malloc(sizeof(int)*qtd);
-        for( i = 0; i < comprimento; i++){
+        scanf("%d", &controle);
 
-            array[i] = atoi(buffer);
+        inserirEntrada();
+        scanf("%d", &entrada);
+
+        switch(entrada){
+            case 1:
+                array = (int*)malloc(sizeof(int)*500);
+                popular(int *array, 500);
+            break;
+            case 2:
+                array = (int*)malloc(sizeof(int)*1000);
+                popular(int *array, 1000);
+                break;
+            case 3:
+                array = (int*)malloc(sizeof(int)*10000);
+                popular(int *array, 10000);
+                break;
+            case 4:
+                array = (int*)malloc(sizeof(int)*50000);
+                popular(int *array, 50000);
+                break;
+            case 5:
+                array = gerarArrayExcel();
+                break;
+            case 0:
+                isRunning = FALSE;
+                break;
         }
-        *array = entradas(qtd, 20);
         limparTela();
+        comprimento = sizeof(array)/sizeof(int);
         //inicia tempo de execução
         clock_t t = clock();
-        switch(valor){
+        switch(controle){
             case 1:
                 //Quick
-
                 break;
 
             case 2:
                 //Chamada da ordenação
-                d = mergeSort(arrayExcel, 0, comprimento-1);
+                d = mergeSort(array, 0, comprimento-1);
                 break;
 
             case 3 :
-                d = bubbleSort(arrayExcel, comprimento);
+                d = bubbleSort(array, comprimento);
                 break;
 
             case 4 :
-                //Selection
+                d = selectionSort(array, comprimento)
                 break;
 
             case 5 :
@@ -82,11 +74,11 @@ int main()
                 break;
 
             case 6 :
-                d = insertionSort(arrayExcel, comprimento, crescente);
+                d = insertionSort(array, comprimento, crescente);
                 break;
 
             case 0 :
-                    system("cls");
+                system("cls");
                 break;
 
         }
