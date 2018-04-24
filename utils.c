@@ -55,7 +55,8 @@ int* gerarArrayExcel(int *comprimento){
     //Reserva o espaco de memoria para o array do arquivo
     int *arrayExcel = (int*)malloc(sizeof(int) * (*comprimento));
     //Preenche o arquivo
-    for(int i = 0; i < *comprimento; i++)
+    int i;
+    for(i = 0; i < *comprimento; i++)
     {
       fgets(buffer, 8, excel);
       arrayExcel[i] = atoi(buffer);
