@@ -10,8 +10,8 @@
 
 /*Info *infoMerge(){
     Info *infoMerge = (Info*)malloc(sizeof(Info));
-    infoMerge->pior = "Teta(n log n)";      infoMerge->tipo = "Divisão e conquista";
-    infoMerge->estavel = "Sim";     infoMerge->in = "Não";      infoMerge->otimo = "Sim";
+    infoMerge->pior = "Teta(n log n)";      infoMerge->tipo = "Divisï¿½o e conquista";
+    infoMerge->estavel = "Sim";     infoMerge->in = "Nï¿½o";      infoMerge->otimo = "Sim";
 }*/
 
 void imprimeVetor(int *arrayExcel, int comprimento, const int tamanhoLinha)
@@ -33,30 +33,29 @@ void imprimeVetor(int *arrayExcel, int comprimento, const int tamanhoLinha)
   printf("\n");
 }
 
-int* gerarArrayExcel(){
+int* gerarArrayExcel(int *comprimento){
     FILE *excel = fopen("vetor de entrada.csv", "r");
     if(excel == NULL)
     {
       printf("ERRO: Falha ao abrir arquivo csv\n");
-      return 1;
+      exit(1);
     }
 
     char buffer[8];
     //Contador da quantidade de numeros contidos no arquivo de texto
-    int comprimento = 0, isRunning = TRUE;
-    int i, valor = -1, qtd = 0;
+    *comprimento = 0;
 
     //Conta a quantidade de numeros no arquivo
     while(fgets(buffer, 8, excel) != NULL)
     {
-      comprimento++;
+      (*comprimento)++;
     }
     //Retorna o ponteiro do arquivo de texto para o inicio
     fseek(excel, 0, SEEK_SET);
-    //Reserva o espaço de memoria para o array do arquivo
-    int *arrayExcel = (int*)malloc(sizeof(int) * comprimento);
+    //Reserva o espaco de memoria para o array do arquivo
+    int *arrayExcel = (int*)malloc(sizeof(int) * (*comprimento));
     //Preenche o arquivo
-    for( i = 0; i < comprimento; i++)
+    for(int i = 0; i < *comprimento; i++)
     {
       fgets(buffer, 8, excel);
       arrayExcel[i] = atoi(buffer);
@@ -67,7 +66,7 @@ int* gerarArrayExcel(){
 }
 
 void menu(){
-    printf("Digite qual a forma de ordenação desejada:\n");
+    printf("Digite qual a forma de ordenaï¿½ï¿½o desejada:\n");
     printf("\t1- Quick Sort\n");
     printf("\t2- Merge Sort\n");
     printf("\t3- Bubble Sort\n");
@@ -92,7 +91,7 @@ void limparTela(){
 }
 
 void inicio(int* controle, int* isRunning){
-    printf("\nDeseja retornar ao menu pricipal?\n 1 - Sim\n0 - Não\n");
+    printf("\nDeseja retornar ao menu pricipal?\n 1 - Sim\n0 - Nï¿½o\n");
     scanf("%d", controle);
     if(*controle  == 0){
         *isRunning = FALSE;
@@ -103,22 +102,22 @@ void inicio(int* controle, int* isRunning){
 void informacoes(int valor){
     switch(valor){
         case 1:
-            printf(" O metodo Quick sort é do tipo Divisão e conquista\n O pior caso é O(n²)\n Não é estável\n Não é in-place\n E não é ótimo\n");
+            printf(" O metodo Quick sort ï¿½ do tipo Divisï¿½o e conquista\n O pior caso ï¿½ O(nï¿½)\n Nï¿½o ï¿½ estï¿½vel\n Nï¿½o ï¿½ in-place\n E nï¿½o ï¿½ ï¿½timo\n");
             break;
         case 2:
-            printf(" O metodo Merge sort é do tipo Divisão e conquista\n O pior caso é Teta(n logo n)\n É estável\n Não é in-place\n É ótimo\n");
+            printf(" O metodo Merge sort ï¿½ do tipo Divisï¿½o e conquista\n O pior caso ï¿½ Teta(n logo n)\n ï¿½ estï¿½vel\n Nï¿½o ï¿½ in-place\n ï¿½ ï¿½timo\n");
             break;
         case 3:
-            printf(" O metodo Bubble sort é do tipo Flutuação\n O pior caso é O(n²)\n É estável\n É in-place\n E não é ótimo\n");
+            printf(" O metodo Bubble sort ï¿½ do tipo Flutuaï¿½ï¿½o\n O pior caso ï¿½ O(nï¿½)\n ï¿½ estï¿½vel\n ï¿½ in-place\n E nï¿½o ï¿½ ï¿½timo\n");
             break;
         case 4:
-            printf(" O metodo Selection sort é do tipo Seleção\n O pior caso é O(n²)\n Não é estável\n É in-place\n E não é ótimo\n");
+            printf(" O metodo Selection sort ï¿½ do tipo Seleï¿½ï¿½o\n O pior caso ï¿½ O(nï¿½)\n Nï¿½o ï¿½ estï¿½vel\n ï¿½ in-place\n E nï¿½o ï¿½ ï¿½timo\n");
             break;
         case 5:
-            printf(" O metodo Shell sort é do tipo Ordenação por inserção\n O pior caso é O(n²)\n Não é estável\n É in-place\n E não é ótimo\n");
+            printf(" O metodo Shell sort ï¿½ do tipo Ordenaï¿½ï¿½o por inserï¿½ï¿½o\n O pior caso ï¿½ O(nï¿½)\n Nï¿½o ï¿½ estï¿½vel\n ï¿½ in-place\n E nï¿½o ï¿½ ï¿½timo\n");
             break;
         case 6:
-            printf(" O metodo Insertion sort é do tipo Ordenação por inserção\n O pior caso é O(n²)\n É estável\n É in-place\n E não é ótimo\n");
+            printf(" O metodo Insertion sort ï¿½ do tipo Ordenaï¿½ï¿½o por inserï¿½ï¿½o\n O pior caso ï¿½ O(nï¿½)\n ï¿½ estï¿½vel\n ï¿½ in-place\n E nï¿½o ï¿½ ï¿½timo\n");
             break;
     }
 }
@@ -158,5 +157,3 @@ popular(int* array, int tam){
 int size(int* array){
 
 }
-
-
