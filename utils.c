@@ -155,4 +155,8 @@ popular(int* array, int tam){
     }
 }
 
+int size(int* array){
+
+}
+
 

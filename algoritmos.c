@@ -44,12 +44,11 @@ Desempenho *bubbleSort(int *array, int comprimento)
     return desBubble;
 }
  Desempenho* selectionSort(int* array, int comprimento){
-
     Desempenho *desempenho =(Desempenho*) malloc(sizeof(Desempenho));
     int i =0, j = 0, menor;
     int comparacoes = 0;
     int trocas = 0;
-
+    int aux;
     desempenho->comparacoes = 0;
     desempenho->trocas = 0;
 
@@ -57,19 +56,19 @@ Desempenho *bubbleSort(int *array, int comprimento)
 
         menor = i;
 
-        for(j=i+1; j<elementos; j++){
+        for(j=i+1; j<comprimento; j++){
 
-            if(vetor[j] < vetor[menor]){
+            if(array[j] < array[menor]){
                menor = j;
             }
 
             desempenho->comparacoes++;
         }
 
-       if(vetor[i] != vetor[menor]){
-            aux = vetor[i];
-            vetor[i] = vetor[menor];
-            vetor[menor] = aux;
+       if(array[i] != array[menor]){
+            aux = array[i];
+            array[i] = array[menor];
+            array[menor] = aux;
             desempenho->trocas++;
         }
     }

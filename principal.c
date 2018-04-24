@@ -14,11 +14,13 @@ int main()
 
     int *array;
     int comprimento;
-    int controle = -1;
+    int algoritmo = -1;
+    int entrada = -1;
+    int isRunning = TRUE;
     while(isRunning == TRUE){
 
         menu();
-        scanf("%d", &controle);
+        scanf("%d", &algoritmo);
 
         inserirEntrada();
         scanf("%d", &entrada);
@@ -26,32 +28,37 @@ int main()
         switch(entrada){
             case 1:
                 array = (int*)malloc(sizeof(int)*500);
-                popular(int *array, 500);
-            break;
+                popular(array, 500);
+                comprimento = 500;
+                break;
             case 2:
                 array = (int*)malloc(sizeof(int)*1000);
-                popular(int *array, 1000);
+                popular(array, 1000);
+                comprimento = 1000;
                 break;
             case 3:
                 array = (int*)malloc(sizeof(int)*10000);
-                popular(int *array, 10000);
+                popular(array, 10000);
+                comprimento = 10000;
                 break;
             case 4:
                 array = (int*)malloc(sizeof(int)*50000);
-                popular(int *array, 50000);
+                popular(array, 50000);
+                comprimento = 50000;
                 break;
             case 5:
                 array = gerarArrayExcel();
+                comprimento = 1000;
                 break;
             case 0:
                 isRunning = FALSE;
                 break;
         }
         limparTela();
-        comprimento = sizeof(array)/sizeof(int);
+        printf("Processando...\n");
         //inicia tempo de execução
         clock_t t = clock();
-        switch(controle){
+        switch(algoritmo){
             case 1:
                 //Quick
                 break;
@@ -66,7 +73,7 @@ int main()
                 break;
 
             case 4 :
-                d = selectionSort(array, comprimento)
+                d = selectionSort(array, comprimento);
                 break;
 
             case 5 :
@@ -84,23 +91,23 @@ int main()
         }
         //Finaliza o tempo de execução
         t = clock() - t;
-
-        if(valor!=0){
+        limparTela();
+        if(algoritmo!=0){
             //Imprime o vetor
-            imprimeVetor(arrayExcel, comprimento, 20);
+            imprimeVetor(array, comprimento, 20);
             //Verifica se a ordenação funcionou corretamente
-            if(isSorted(arrayExcel, comprimento, crescente) == TRUE){
+            if(isSorted(array, comprimento, crescente) == TRUE){
                 printf("\nFoi levado %d ciclos do processador\
-                      (%f segundos)\nRealizou %d comparações e %d trocas\n",
-                       t, ((float)t)/CLOCKS_PER_SEC, d->comparacoes, d->trocas);
+                      (%.5f milisegundos)\nRealizou %d comparações e %d trocas\n",
+                       t, ((float)t)*1000/CLOCKS_PER_SEC, d->comparacoes, d->trocas);
                 //Imprime as informações
-                informacoes(valor);
+                informacoes(algoritmo);
                 //printf("ARRAY %d",array[3]);
             }else{
               printf("Vetor não ordenado\n");
             }
         }
-        inicio(&valor, &isRunning);
+        inicio(&algoritmo, &isRunning);
     }
     free(d);
     return 0;

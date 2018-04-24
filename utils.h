@@ -19,6 +19,9 @@ void limparTela();
 void inicio(int *controle, int* isRunning);
 void informacoes(int valor);
 int *entradas(int qtd, const int tam);
+void popular(int* array, int tam);
+int* gerarArrayExcel();
+int size(int* array);
 
 
 #endif /* UTILS_H */

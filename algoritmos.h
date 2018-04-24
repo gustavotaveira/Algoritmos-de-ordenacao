@@ -13,7 +13,6 @@ typedef struct _Desempenho
 {
   int comparacoes;
   int trocas;
-  clock_t tempoExecucao;
 }Desempenho;
 
 Desempenho *insertionSort(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo));
