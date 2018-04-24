@@ -78,8 +78,8 @@ void sortTeste(int tipo, Vetor array, Bool (*compare)(int primeiro, int segundo)
       estavel = "S";
       inplace = "N";
       break;
-    case BUBLLE:
-      nome = "Bublle Sort";
+    case BUBBLE:
+      nome = "Bublle Sort   ";
       estavel = "S";
       inplace = "S";
       break;
@@ -89,7 +89,7 @@ void sortTeste(int tipo, Vetor array, Bool (*compare)(int primeiro, int segundo)
       inplace = "S";
       break;
     case SHELL:
-      nome = "Shell Sort";
+      nome = "Shell Sort    ";
       estavel = "N";
       inplace = "S";
       break;
@@ -112,11 +112,8 @@ void sortTeste(int tipo, Vetor array, Bool (*compare)(int primeiro, int segundo)
   //imprimeVetor(arrayExcel, comprimento, 20);
   //Verifica se a ordenação funcionou corretamente
   if(isSorted(duplicado, array.comprimento, compare) == TRUE)
-    printf("Vetor ordenado por %s\nFoi levado %d ciclos do processador\
-(%f segundos)\nRealizou %d comparações e %d trocas\n\
-Complexidade: %s\nOtimo: %s\nEstavel: %s\nInplace: %s\n\n",nome,
-             t, ((float)t)/CLOCKS_PER_SEC, d->comparacoes, d->trocas,
-              complexidade, otimo, estavel, inplace);
+    printf("%s [%d ciclos do processador] [%f segundos] [%d comparações] [%d trocas]\n",nome,
+             t, ((float)t)/CLOCKS_PER_SEC, d->comparacoes, d->trocas);
   else
     printf("Falha ao ordenar por %s\n", nome);
 

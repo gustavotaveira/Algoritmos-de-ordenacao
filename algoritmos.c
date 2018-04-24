@@ -21,11 +21,45 @@ Desempenho *insertionSort(int *array, int comprimento, Bool (*compare)(int prime
   return desInsert;
 }
 
-void bubbleSort(int elementos){
-
+Desempenho *bubbleSort(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo))
+{
+  Desempenho *desInsert = (Desempenho*)malloc(sizeof(Desempenho));
+  desInsert->trocas = 0;
+  desInsert->comparacoes = 0;
+  for(int i = comprimento - 1; i > 0; i--)
+  {
+    for(int j = 0; j < i; j++)
+    {
+      if(desInsert->comparacoes++, compare(array[j+1], array[j]))
+      {
+        int temp = array[j];
+        array[j] = array[j+1];
+        array[j+1] = temp;
+        desInsert->trocas++;
+      }
+    }
+  }
+  return desInsert;
 }
-void selectionSort(int elementos){
-
+Desempenho *selectionSort(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo))
+{
+  Desempenho *desInsert = (Desempenho*)malloc(sizeof(Desempenho));
+  desInsert->trocas = 0;
+  desInsert->comparacoes = 0;
+  for(int i = 0; i < comprimento - 1; i++)
+  {
+    int min = i;
+    for(int j = i + 1; j < comprimento; j++)
+    {
+      if(desInsert->comparacoes++, compare(array[j], array[min]) == FALSE)
+        min = j;
+    }
+    int temp = array[i];
+    array[i] = array[min];
+    array[min] = temp;
+    desInsert->trocas++;
+  }
+  return desInsert;
 }
 Desempenho *shellSort(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo))
 {
@@ -51,12 +85,17 @@ Desempenho *shellSort(int *array, int comprimento, Bool (*compare)(int primeiro,
   return desInsert;
 }
 
-void quickSort(int elementos){
+Desempenho *quickSort(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo))
+{
 
 }
-void mergeSort(int elementos){
+Desempenho *mergeSort(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo))
+{
 
 }
+
+
+
 
 //Retorna TRUE se array estiver ordenado de acordo com a comparação da função compare
 Bool isSorted(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo))
