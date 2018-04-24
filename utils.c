@@ -7,13 +7,6 @@
 #define TRUE 1
 #define FALSE 0
 
-
-/*Info *infoMerge(){
-    Info *infoMerge = (Info*)malloc(sizeof(Info));
-    infoMerge->pior = "Teta(n log n)";      infoMerge->tipo = "Divis�o e conquista";
-    infoMerge->estavel = "Sim";     infoMerge->in = "N�o";      infoMerge->otimo = "Sim";
-}*/
-
 void imprimeVetor(int *arrayExcel, int comprimento, const int tamanhoLinha)
 {
   int s = 0, i;
@@ -33,7 +26,8 @@ void imprimeVetor(int *arrayExcel, int comprimento, const int tamanhoLinha)
   printf("\n");
 }
 
-int* gerarArrayExcel(int *comprimento){
+int* gerarArrayExcel(comprimento){
+    int i;
     FILE *excel = fopen("vetor de entrada.csv", "r");
     if(excel == NULL)
     {
@@ -43,19 +37,19 @@ int* gerarArrayExcel(int *comprimento){
 
     char buffer[8];
     //Contador da quantidade de numeros contidos no arquivo de texto
-    *comprimento = 0;
+    comprimento = 0;
 
     //Conta a quantidade de numeros no arquivo
     while(fgets(buffer, 8, excel) != NULL)
     {
-      (*comprimento)++;
+      comprimento++;
     }
     //Retorna o ponteiro do arquivo de texto para o inicio
     fseek(excel, 0, SEEK_SET);
     //Reserva o espaco de memoria para o array do arquivo
-    int *arrayExcel = (int*)malloc(sizeof(int) * (*comprimento));
+    int *arrayExcel = (int*)malloc(sizeof(int) * comprimento);
     //Preenche o arquivo
-    for(int i = 0; i < *comprimento; i++)
+    for( i = 0; i < comprimento; i++)
     {
       fgets(buffer, 8, excel);
       arrayExcel[i] = atoi(buffer);
@@ -66,7 +60,7 @@ int* gerarArrayExcel(int *comprimento){
 }
 
 void menu(){
-    printf("Digite qual a forma de ordena��o desejada:\n");
+    printf("Digite qual a forma de ordenação desejada:\n");
     printf("\t1- Quick Sort\n");
     printf("\t2- Merge Sort\n");
     printf("\t3- Bubble Sort\n");
@@ -91,7 +85,7 @@ void limparTela(){
 }
 
 void inicio(int* controle, int* isRunning){
-    printf("\nDeseja retornar ao menu pricipal?\n 1 - Sim\n0 - N�o\n");
+    printf("\nDeseja retornar ao menu pricipal?\n 1 - Sim\n0 - Não\n");
     scanf("%d", controle);
     if(*controle  == 0){
         *isRunning = FALSE;
@@ -102,48 +96,24 @@ void inicio(int* controle, int* isRunning){
 void informacoes(int valor){
     switch(valor){
         case 1:
-            printf(" O metodo Quick sort � do tipo Divis�o e conquista\n O pior caso � O(n�)\n N�o � est�vel\n N�o � in-place\n E n�o � �timo\n");
+            printf(" O método Quick sort é do tipo Divisão e conquista\n O pior caso é O(n²)\n Não é estável\n Não é in-place\n E não é ótimo\n");
             break;
         case 2:
-            printf(" O metodo Merge sort � do tipo Divis�o e conquista\n O pior caso � Teta(n logo n)\n � est�vel\n N�o � in-place\n � �timo\n");
+            printf(" O método Merge sort é do tipo Divisão e conquista\n O pior caso é Teta(n logo n)\n É estável\n Não é in-place\n E é ótimo\n");
             break;
         case 3:
-            printf(" O metodo Bubble sort � do tipo Flutua��o\n O pior caso � O(n�)\n � est�vel\n � in-place\n E n�o � �timo\n");
+            printf(" O método Bubble sort é do tipo Flutuação\n O pior caso é O(n²)\n É estável\n É in-place\n E não é ótimo\n");
             break;
         case 4:
-            printf(" O metodo Selection sort � do tipo Sele��o\n O pior caso � O(n�)\n N�o � est�vel\n � in-place\n E n�o � �timo\n");
+            printf(" O método Selection sort é do tipo Seleção\n O pior caso é O(n²)\n Não é estável\n É in-place\n E não é ótimo\n");
             break;
         case 5:
-            printf(" O metodo Shell sort � do tipo Ordena��o por inser��o\n O pior caso � O(n�)\n N�o � est�vel\n � in-place\n E n�o � �timo\n");
+            printf(" O método Shell sort é do tipo Ordenação por inserção\n O pior caso é O(n²)\n Não é est�vel\n É in-place\n E não é ótimo\n");
             break;
         case 6:
-            printf(" O metodo Insertion sort � do tipo Ordena��o por inser��o\n O pior caso � O(n�)\n � est�vel\n � in-place\n E n�o � �timo\n");
+            printf(" O método Insertion sort é do tipo Ordenação por inserção\n O pior caso é O(n²)\n É estável\n É in-place\n E não é ótimo\n");
             break;
     }
-}
-
-int *entradas(int qtd, const int tam){
-  int s = qtd, i, *val, j=0;
-  val = (int*)malloc(sizeof(int)*qtd);
-
-  for(i=qtd; i>0; i--)
-  {
-    val[j]=i;
-    /* PARA IMPRIMIR VETOR DE ENTRADAS DECRESCENTES
-    if(s > tam){
-      printf("[%d] ", val[j]);
-      s--;
-    }
-    else
-    {
-      printf("\n[%d] ", val[j]);
-      s = qtd-1;
-    }*/
-    j++;
-  }
-    printf("\n");
-    return val;
-    free(val);
 }
 
 popular(int* array, int tam){

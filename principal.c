@@ -47,7 +47,7 @@ int main()
                 comprimento = 50000;
                 break;
             case 5:
-                array = gerarArrayExcel();
+                array = gerarArrayExcel(comprimento);
                 comprimento = 1000;
                 break;
             case 0:
@@ -62,32 +62,25 @@ int main()
             case 1:
                 //Quick
                 break;
-
             case 2:
                 //Chamada da ordenação
                 d = mergeSort(array, 0, comprimento-1);
                 break;
-
             case 3 :
                 d = bubbleSort(array, comprimento);
                 break;
-
             case 4 :
                 d = selectionSort(array, comprimento);
                 break;
-
             case 5 :
                 d = shellSort(array, comprimento, crescente);
                 break;
-
             case 6 :
                 d = insertionSort(array, comprimento, crescente);
                 break;
-
             case 0 :
                 system("cls");
                 break;
-
         }
         //Finaliza o tempo de execução
         t = clock() - t;
@@ -112,61 +105,3 @@ int main()
     free(d);
     return 0;
 }
-
-
-
-
-    /*menu();
-    scanf("%d", &valor);
-
-    //inicia tempo
-    clock_t t = clock();
-    switch ( valor )
-    {
-     case 1:
-       //Quick
-
-     break;
-
-     case 2:
-        //Chamada da ordenação
-        d = mergeSort(arrayExcel, 0, comprimento-1);
-     break;
-
-     case 3 :
-        d = bubbleSort(arrayExcel, comprimento);
-     break;
-
-     case 4 :
-        //Selection
-     break;
-
-     case 5 :
-        //Shell\n
-     break;
-
-     case 6 :
-        d = insertionSort(arrayExcel, comprimento, crescente);
-     break;
-
-     default :
-       printf ("Valor invalido!\n");
-    //getch();
-    return 0;
-    }
-    //Finaliza o tempo
-    t = clock() - t;
-
-    //Imprime o vetor
-    imprimeVetor(arrayExcel, comprimento, 20);
-    //Verifica se a ordenação funcionou corretamente
-    if(isSorted(arrayExcel, comprimento, crescente) == TRUE)
-      printf("\nFoi levado %d ciclos do processador\
-              (%f segundos)\nRealizou %d comparações e %d trocas\n",
-               t, ((float)t)/CLOCKS_PER_SEC, d->comparacoes, d->trocas);
-    else
-      printf("Vetor não ordenado\n");
-
-    free(d);
-    return 0;
-}*/
