@@ -74,8 +74,29 @@ Desempenho *bubbleSort(int *array, int comprimento)
     }
     return desempenho;
  }
-Desempenho *shellSort(int *array, int comprimento){
-}
+ Desempenho *shellSort(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo))
+ {
+   Desempenho *desShell = (Desempenho*)malloc(sizeof(Desempenho));
+   desShell->trocas = 0;
+   desShell->comparacoes = 0;
+   for(int h = comprimento/2; h > 0; h = h/2)
+   {
+     for(int i = h; i < comprimento; i++)
+     {
+       int temp = array[i];
+       int j;
+       for(j = i; j >= h &&(desShell->comparacoes++, compare( array[j - h], temp) == FALSE); j = j - h)
+       {
+         array[j] = array[j - h];
+         desShell->trocas++;
+       }
+       array[j] = temp;
+       desShell->trocas++;
+     }
+
+   }
+   return desShell;
+ }
 Desempenho *quickSort(int *array, int comprimento){
 }
 

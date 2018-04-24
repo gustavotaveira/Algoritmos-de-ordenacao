@@ -77,7 +77,7 @@ int main()
                 break;
 
             case 5 :
-                //Shell\n
+                d = shellSort(array, comprimento, crescente);
                 break;
 
             case 6 :
