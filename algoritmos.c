@@ -51,7 +51,7 @@ Desempenho *selectionSort(int *array, int comprimento, Bool (*compare)(int prime
     int min = i;
     for(int j = i + 1; j < comprimento; j++)
     {
-      if(desInsert->comparacoes++, compare(array[j], array[min]) == FALSE)
+      if(desInsert->comparacoes++, compare(array[min], array[j]) == FALSE)
         min = j;
     }
     int temp = array[i];
