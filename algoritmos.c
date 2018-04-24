@@ -12,7 +12,7 @@ void selectionSort(int elementos){
     int comparacoes = 0;
     int trocas = 0;
     char complexidade[] = "n^2";
-    int otimo = TRUE;
+    int otimo = FALSE;
     int estavel = FALSE;
     int inPlace = TRUE;
     char tipoOrdenacao[] = "Seleção";
