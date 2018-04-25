@@ -79,9 +79,10 @@ Desempenho *bubbleSort(int *array, int comprimento)
    Desempenho *desShell = (Desempenho*)malloc(sizeof(Desempenho));
    desShell->trocas = 0;
    desShell->comparacoes = 0;
-   for(int h = comprimento/2; h > 0; h = h/2)
+   int i, h;
+   for(h = comprimento/2; h > 0; h = h/2)
    {
-     for(int i = h; i < comprimento; i++)
+     for(i = h; i < comprimento; i++)
      {
        int temp = array[i];
        int j;
@@ -97,8 +98,56 @@ Desempenho *bubbleSort(int *array, int comprimento)
    }
    return desShell;
  }
-Desempenho *quickSort(int *array, int comprimento){
+Desempenho* quickSort(int *array, int comprimento){
+    Desempenho *desempenho = (Desempenho*)malloc(sizeof(Desempenho));
+    desempenho->comparacoes = 0;
+    desempenho->trocas = 0;
+    quick(array, 0, comprimento - 1, desempenho);
+    return desempenho;
 }
+
+void quick(int *array, int esq, int dir, Desempenho* desempenho ){
+
+    if(esq < dir){
+        int pivo = separar(array, esq, dir, desempenho);
+        quick(array, esq, pivo-1, desempenho);
+        quick(array, pivo+1, dir, desempenho);
+    }
+}
+
+int separar(int *array, int esq, int dir, Desempenho* desempenho){
+    int i = esq, j =  dir;
+    int aux;
+    int pivo = array[esq];
+
+    while(i < j){
+        desempenho->comparacoes++;
+        while(i < dir && array[i] <= pivo) {
+            i++;
+            desempenho->comparacoes++;
+        }
+        desempenho->comparacoes++;
+        while(j > esq && array[j] >= pivo) {
+            j--;
+            desempenho->comparacoes++;
+        }
+
+        if(i < j){
+            aux = array[i];
+            array[i] = array[j];
+            array[j] = aux;
+            i++;
+            j--;
+            desempenho->trocas++;
+        }
+        aux = array[esq];
+        array[esq] = array[j];
+        array[j] = aux;
+        desempenho->trocas++;
+        return j;
+    }
+}
+
 
 Desempenho *mergeSort(int *array, int comeco, int fim){
     Desempenho *desMerge = (Desempenho*)malloc(sizeof(Desempenho));
