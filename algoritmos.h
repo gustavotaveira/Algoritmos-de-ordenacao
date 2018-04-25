@@ -18,9 +18,10 @@ typedef struct _Desempenho
 Desempenho *insertionSort(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo));
 Desempenho *bubbleSort(int *array, int comprimento);
 Desempenho *selectionSort(int *array, int comprimento);
- Desempenho *shellSort(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo));
+Desempenho *shellSort(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo));
 Desempenho *quickSort(int *array, int comprimento);
 Desempenho *mergeSort(int *array, int comeco, int fim);
+
 
 //Retorna TRUE se array estiver ordenado de acordo com a comparação da função compare
 Bool isSorted(int *array, int comprimento, Bool (*compare)(int primeiro, int segundo));
