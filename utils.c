@@ -37,12 +37,12 @@ int* gerarArrayExcel(int *comprimento){
 
     char buffer[8];
     //Contador da quantidade de numeros contidos no arquivo de texto
-    comprimento = 0;
+    *comprimento = 0;
 
     //Conta a quantidade de numeros no arquivo
     while(fgets(buffer, 8, excel) != NULL)
     {
-      comprimento++;
+      *comprimento++;
     }
     //Retorna o ponteiro do arquivo de texto para o inicio
     fseek(excel, 0, SEEK_SET);
@@ -50,7 +50,6 @@ int* gerarArrayExcel(int *comprimento){
 
     int *arrayExcel = (int*)malloc(sizeof(int) * (*comprimento));
     //Preenche o arquivo
-    int i;
     for(i = 0; i < *comprimento; i++)
     {
       fgets(buffer, 8, excel);

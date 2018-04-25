@@ -7,7 +7,7 @@
 
 int main()
 {
-    setlocale(LC_ALL, "portuguese");
+    setlocale(LC_ALL, "portuguese-brazilian");
 
     //Ponteiro que vai apontar para a estrutura que armazenara o desempenho
     Desempenho *d = NULL;
@@ -21,6 +21,8 @@ int main()
 
         menu();
         scanf("%d", &algoritmo);
+
+        limparTela();
 
         inserirEntrada();
         scanf("%d", &entrada);
